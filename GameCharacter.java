@@ -1,32 +1,45 @@
 /**
  * Abstract base class for RPG characters.
- * Contains common fields and behaviors.
- * Fields: name, hp, attackPower
- * Includes a concrete rest() method and abstract methods attack() and describeClass().
- * All fields are private with getters and setters.
+ * Represents shared properties and behaviors of all characters.
  */
 public abstract class GameCharacter {
+
+    // Encapsulated fields
     private String name;
     private int hp;
     private int attackPower;
 
+    /**
+     * Constructor with validation.
+     */
     public GameCharacter(String name, int hp, int attackPower) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
         if (hp <= 0) {
             throw new IllegalArgumentException("HP must be greater than 0");
         }
         if (attackPower <= 0) {
             throw new IllegalArgumentException("Attack power must be greater than 0");
         }
+
         this.name = name;
         this.hp = hp;
         this.attackPower = attackPower;
     }
+
+    // ======================
+    // Getters and Setters
+    // ======================
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
         this.name = name;
     }
 
@@ -35,8 +48,8 @@ public abstract class GameCharacter {
     }
 
     public void setHp(int hp) {
-        if (hp <= 0) {
-            throw new IllegalArgumentException("HP must be greater than 0");
+        if (hp < 0) {
+            throw new IllegalArgumentException("HP cannot be negative");
         }
         this.hp = hp;
     }
@@ -52,21 +65,29 @@ public abstract class GameCharacter {
         this.attackPower = attackPower;
     }
 
+    // ======================
+    // Concrete Method
+    // ======================
+
     /**
-     * Restores some HP to the character.
+     * Restores a fixed amount of HP.
      */
     public void rest() {
-        this.hp += 10;
+        hp += 10;
         System.out.println(name + " rests and recovers 10 HP!");
     }
 
-    /**
-     * Abstract method for attacking another character.
-     */
-    public abstract void attack(GameCharacter target);
+    // ======================
+    // Abstract Methods
+    // ======================
 
     /**
-     * Abstract method to describe the character's class.
+     * Performs an attack action.
+     */
+    public abstract void attack();
+
+    /**
+     * Returns a description of the character class.
      */
     public abstract String describeClass();
 }
