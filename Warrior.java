@@ -18,8 +18,8 @@ public class Warrior extends GameCharacter implements Defendable {
     }
 
     @Override
-    public void attack(GameCharacter target) {
-        System.out.println(getName() + " attacks " + target.getName() + " with a sword for " + getAttackPower() + " damage!");
+    public String attack(GameCharacter target) {
+        return getName() + " attacks " + target.getName() + " with a sword for " + getAttackPower() + " damage!";
     }
 
     @Override
@@ -28,8 +28,8 @@ public class Warrior extends GameCharacter implements Defendable {
     }
 
     @Override
-    public void block() {
-        System.out.println(getName() + " raises their shield to block!");
+    public String block() {
+        return getName() + " raises their shield to block!";
     }
 
     @Override

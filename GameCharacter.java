@@ -72,9 +72,9 @@ public abstract class GameCharacter {
     /**
      * Restores a fixed amount of HP.
      */
-    public void rest() {
+    public String rest() {
         hp += 10;
-        System.out.println(name + " rests and recovers 10 HP!");
+        return name + " rests and recovers 10 HP!";
     }
 
     // ======================
@@ -82,9 +82,9 @@ public abstract class GameCharacter {
     // ======================
 
     /**
-     * Performs an attack action.
+     * Performs an attack action on a target.
      */
-    public abstract void attack();
+    public abstract String attack(GameCharacter target);
 
     /**
      * Returns a description of the character class.

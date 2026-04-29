@@ -5,7 +5,7 @@ public interface Defendable {
     /**
      * Perform a block action.
      */
-    void block();
+    String block();
 
     /**
      * Get the defense rating of the character.

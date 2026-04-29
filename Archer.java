@@ -18,12 +18,12 @@ public class Archer extends GameCharacter {
     }
 
     @Override
-    public void attack(GameCharacter target) {
+    public String attack(GameCharacter target) {
         if (arrowCount > 0) {
             arrowCount--;
-            System.out.println(getName() + " shoots an arrow at " + target.getName() + " for " + getAttackPower() + " damage! (Arrows left: " + arrowCount + ")");
+            return getName() + " shoots an arrow at " + target.getName() + " for " + getAttackPower() + " damage! (Arrows left: " + arrowCount + ")";
         } else {
-            System.out.println(getName() + " has no arrows left to attack!");
+            return getName() + " has no arrows left to attack!";
         }
     }
 

@@ -18,8 +18,8 @@ public class Mage extends GameCharacter implements CasterAbility {
     }
 
     @Override
-    public void attack(GameCharacter target) {
-        System.out.println(getName() + " casts a fireball at " + target.getName() + " for " + getAttackPower() + " magic damage!");
+    public String attack(GameCharacter target) {
+        return getName() + " casts a fireball at " + target.getName() + " for " + getAttackPower() + " magic damage!";
     }
 
     @Override
@@ -28,12 +28,12 @@ public class Mage extends GameCharacter implements CasterAbility {
     }
 
     @Override
-    public void castSpell(String spellName) {
+    public String castSpell(String spellName) {
         if (mana >= 10) {
             mana -= 10;
-            System.out.println(getName() + " casts " + spellName + "! (Mana: " + mana + ")");
+            return getName() + " casts " + spellName + "! (Mana: " + mana + ")";
         } else {
-            System.out.println(getName() + " does not have enough mana to cast " + spellName + "!");
+            return getName() + " does not have enough mana to cast " + spellName + "!";
         }
     }
 }
